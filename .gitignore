@@ -1,0 +1,10 @@
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.swp
+*.swo
+.DS_Store
+.vscode/
+.idea/
+out/

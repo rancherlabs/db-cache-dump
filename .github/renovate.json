@@ -1,0 +1,33 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>rancher/renovate-config#release"
+  ],
+  "baseBranchPatterns": [
+    "main"
+  ],
+  "prHourlyLimit": 20,
+  "packageRules": [
+    {
+      "description": "Group all GitHub Actions updates into a single PR",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "github-actions",
+      "automerge": true
+    },
+    {
+      "description": "Group SUSE BCI base image updates across all Dockerfiles",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "registry.suse.com/bci/bci-base",
+        "registry.suse.com/bci/bci-micro"
+      ],
+      "versioning": "loose",
+      "groupName": "bci-base-image",
+      "automerge": true
+    }
+  ]
+}
