@@ -1,4 +1,4 @@
-name: End-to-end tests
+name: Build and test
 on:
   pull_request:
     branches: [master]
@@ -29,6 +29,10 @@ jobs:
 
       - name: Smoke test
         run: bash test/smoke.sh ghcr.io/${{ github.repository }}:ci
+
+      - name: Install k3d
+        # renovate: datasource=github-releases depName=k3d-io/k3d
+        run: curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | TAG=v5.8.3 bash
 
       - name: Run e2e
         run: IMAGE=ghcr.io/${{ github.repository }}:ci bash test/e2e-k3d.sh

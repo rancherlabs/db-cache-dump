@@ -28,6 +28,28 @@
       "versioning": "loose",
       "groupName": "bci-base-image",
       "automerge": true
+    },
+    {
+      "description": "k3d CLI updates",
+      "matchDepNames": [
+        "k3d-io/k3d"
+      ],
+      "automerge": false
+    }
+  ],
+    "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track k3d version in e2e workflow",
+      "managerFilePatterns": [
+        "/^\\.github/workflows/e2e\\.yml$/"
+      ],
+      "matchStrings": [
+        "# renovate: datasource=github-releases depName=k3d-io/k3d\\n.*TAG=v(?<currentValue>\\d+\\.\\d+\\.\\d+)"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "k3d-io/k3d",
+      "extractVersionTemplate": "^v(?<version>.*)$"
     }
   ]
 }
