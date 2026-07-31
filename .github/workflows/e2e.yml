@@ -1,9 +1,9 @@
 name: Build and test
 on:
   pull_request:
-    branches: [master]
+    branches: [main]
   push:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
